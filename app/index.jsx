@@ -11,7 +11,7 @@ export default function Index() {
       }}
     >
       <Link href={"./login"}>
-        <Text>Go to Login Screen</Text>
+        <Text style={{ fontSize: 30 }}>Go to Login Screen</Text>
       </Link>
     </View>
   );
