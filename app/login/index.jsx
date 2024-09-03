@@ -1,16 +1,14 @@
-import { View, Image, Text, Pressable, ScrollView } from "react-native";
+import { View, Image, Text, Pressable, ScrollView, Alert } from "react-native";
 import React, { useCallback } from "react";
 import Colors from "@/constants/Colors";
 
-import { Link } from "expo-router";
-import { useOAuth } from "@clerk/clerk-expo";
+import { useNavigation } from "@react-navigation/native";
+import { useOAuth, useSession } from "@clerk/clerk-expo";
 import * as Linking from "expo-linking";
 import * as WebBrowser from "expo-web-browser";
 
 export const useWarmUpBrowser = () => {
   React.useEffect(() => {
-    // Warm up the android browser to improve UX
-    // https://docs.expo.dev/guides/authentication/#improving-user-experience
     void WebBrowser.warmUpAsync();
     return () => {
       void WebBrowser.coolDownAsync();
@@ -21,10 +19,18 @@ export const useWarmUpBrowser = () => {
 WebBrowser.maybeCompleteAuthSession();
 
 export default function LoginScreen() {
+  const navigation = useNavigation();
   useWarmUpBrowser();
   const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
+  const { isSignedIn } = useSession(); // Check if the user is signed in
 
   const onPress = useCallback(async () => {
+    if (isSignedIn) {
+      // If the user is already signed in, navigate directly to /home
+      navigation.navigate("home");
+      return;
+    }
+
     try {
       const { createdSessionId, signIn, signUp, setActive } =
         await startOAuthFlow({
@@ -32,13 +38,28 @@ export default function LoginScreen() {
         });
 
       if (createdSessionId) {
+        navigation.navigate("home");
       } else {
         // Use signIn or signUp for next steps such as MFA
       }
     } catch (err) {
-      console.error("OAuth error", err);
+      // Check for session_exists error and handle it
+      if (err.clerkError && err.errors?.[0]?.code === "session_exists") {
+        console.log("Session already exists, navigating to home.");
+        navigation.navigate("home");
+      } else {
+        console.error("OAuth error:", err);
+        Alert.alert(
+          "Authentication Error",
+          "An error occurred during OAuth. Please try again later."
+        );
+
+        if (__DEV__) {
+          Alert.alert("Detailed Error", JSON.stringify(err));
+        }
+      }
     }
-  }, []);
+  }, [isSignedIn]);
 
   return (
     <ScrollView>
@@ -55,7 +76,7 @@ export default function LoginScreen() {
               textAlign: "center",
             }}
           >
-            Ready to make a new freind?
+            Ready to make a new friend?
           </Text>
           <Text
             style={{
