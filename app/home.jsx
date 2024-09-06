@@ -5,6 +5,7 @@ export default function Home() {
   return (
     <View style={{ justifyContent: "center" }}>
       <Text>Home page</Text>
+      <Text>Home page</Text>
     </View>
   );
 }
