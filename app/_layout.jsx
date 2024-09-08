@@ -3,7 +3,7 @@ import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SecureStore from "expo-secure-store";
 import { Alert } from "react-native";
-import HomeScreen from "./home";
+import HomeScreen from "./(tabs)/home";
 
 export default function RootLayout() {
   const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
@@ -24,7 +24,7 @@ export default function RootLayout() {
     <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
       <Stack>
         <Stack.Screen name="index" />
-        <Stack.Screen name="login/index" options={{ headerShown: false }} />
+        <Stack.Screen name="(tabs)" />
         <Stack.Screen name="login/index" options={{ headerShown: false }} />
       </Stack>
     </ClerkProvider>
