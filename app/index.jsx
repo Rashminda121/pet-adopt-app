@@ -27,10 +27,14 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      {user ? <Redirect href={"./home"} /> : <Redirect href={"./login"} />}
-      <Link href={"./login"}>
+      {user ? (
+        <Redirect href={"./(tabs)/home"} />
+      ) : (
+        <Redirect href={"./login"} />
+      )}
+      {/* <Link href={"./login"}>
         <Text style={{ fontSize: 40 }}>Go to login Page if not redirected</Text>
-      </Link>
+      </Link> */}
     </View>
   );
 }
