@@ -32,9 +32,9 @@ export default function Index() {
       ) : (
         <Redirect href={"./login"} />
       )}
-      <Link href={"./login"}>
+      {/* <Link href={"./login"}>
         <Text style={{ fontSize: 40 }}>Go to login Page if not redirected</Text>
-      </Link>
+      </Link> */}
     </View>
   );
 }
