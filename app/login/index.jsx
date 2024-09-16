@@ -27,26 +27,27 @@ export default function LoginScreen() {
   const onPress = useCallback(async () => {
     if (isSignedIn) {
       // If the user is already signed in, navigate directly to /home
-      navigation.navigate("./home");
+      navigation.navigate("tabs", { screen: "home" });
       return;
     }
 
     try {
       const { createdSessionId, signIn, signUp, setActive } =
         await startOAuthFlow({
-          redirectUrl: Linking.createURL("./home", { scheme: "myapp" }),
+          redirectUrl: Linking.createURL("home"), //, { scheme: "myapp" }),
         });
 
       if (createdSessionId) {
-        navigation.navigate("./home");
+        navigation.navigate("tabs", { screen: "home" });
       } else {
         // Use signIn or signUp for next steps such as MFA
+        console.log("User needs to sign in or sign up.");
       }
     } catch (err) {
       // Check for session_exists error and handle it
       if (err.clerkError && err.errors?.[0]?.code === "session_exists") {
         console.log("Session already exists, navigating to home.");
-        navigation.navigate("./home");
+        navigation.navigate("tabs", { screen: "home" });
       } else {
         console.error("OAuth error:", err);
         Alert.alert(
@@ -59,7 +60,7 @@ export default function LoginScreen() {
         }
       }
     }
-  }, [isSignedIn]);
+  }, [isSignedIn, navigation]);
 
   return (
     <ScrollView>

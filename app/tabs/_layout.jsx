@@ -1,12 +1,19 @@
 import { View, Text } from "react-native";
 import React from "react";
-import { Tabs } from "expo-router";
+//import { Tabs } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import Colors from "./../../constants/Colors";
+import Colors from "../../constants/Colors";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import HomeScreen from "@/app/tabs/home";
+import HomeScreen from "@/app/tabs/home";
+import HomeScreen from "@/app/tabs/home";
+import HomeScreen from "@/app/tabs/home";
+
+const Tabs = createBottomTabNavigator();
 
 export default function TabLayout() {
   return (
-    <Tabs screenOptions={{ tabBarActiveTintColor: Colors.PRIMARY }}>
+    <Tabs.Navigator screenOptions={{ tabBarActiveTintColor: Colors.PRIMARY }}>
       <Tabs.Screen
         options={{
           title: "Home",
@@ -16,6 +23,7 @@ export default function TabLayout() {
           ),
         }}
         name="home"
+        component={HomeScreen}
       />
       <Tabs.Screen
         options={{
@@ -26,6 +34,7 @@ export default function TabLayout() {
           ),
         }}
         name="favourite"
+        component={HomeScreen}
       />
       <Tabs.Screen
         options={{
@@ -36,6 +45,7 @@ export default function TabLayout() {
           ),
         }}
         name="inbox"
+        component={HomeScreen}
       />
       <Tabs.Screen
         options={{
@@ -46,7 +56,8 @@ export default function TabLayout() {
           ),
         }}
         name="profile"
+        component={HomeScreen}
       />
-    </Tabs>
+    </Tabs.Navigator>
   );
 }

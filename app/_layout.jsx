@@ -1,9 +1,15 @@
 import { ClerkProvider } from "@clerk/clerk-expo";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+//import { Stack } from "expo-router";
 import * as SecureStore from "expo-secure-store";
 import { Alert } from "react-native";
-import HomeScreen from "./(tabs)/home";
+import { createStackNavigator } from "@react-navigation/stack";
+import LoginScreen from "@/app/login/index";
+import Index from "@/app/index";
+import HomeScreen from "@/app/tabs/home";
+import Tabs from "@/app/tabs/_layout";
+
+const Stack = createStackNavigator();
 
 export default function RootLayout() {
   const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
@@ -22,11 +28,20 @@ export default function RootLayout() {
 
   return (
     <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
-      <Stack>
-        <Stack.Screen name="index" />
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="login/index" options={{ headerShown: false }} />
-      </Stack>
+      <Stack.Navigator>
+        <Stack.Screen name="index" component={Index} />
+        <Stack.Screen
+          name="tabs"
+          component={Tabs}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="login/index"
+          component={LoginScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="home" component={HomeScreen} />
+      </Stack.Navigator>
     </ClerkProvider>
   );
 }
