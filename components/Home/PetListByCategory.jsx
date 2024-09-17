@@ -1,8 +1,8 @@
-import { View, Text, FlatList } from "react-native";
-import React, { useEffect, useState } from "react";
-import Category from "./Category";
-import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "@/config/firebaseConfig";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
+import { FlatList, View } from "react-native";
+import Category from "./Category";
 import PetListItem from "./PetListItem";
 
 export default function PetListByCategory() {

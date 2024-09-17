@@ -77,7 +77,10 @@ export default function LoginScreen() {
   }, [isSignedIn, navigation]);
 
   return (
-    <ScrollView>
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      showsHorizontalScrollIndicator={false}
+    >
       {!user ? <Redirect href={"./login"} /> : <Redirect href={"home"} />}
 
       <View style={{ backgroundColor: Colors.white, height: "100% " }}>
