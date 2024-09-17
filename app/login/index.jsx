@@ -7,6 +7,9 @@ import { useOAuth, useSession } from "@clerk/clerk-expo";
 import * as Linking from "expo-linking";
 import * as WebBrowser from "expo-web-browser";
 
+import { useUser } from "@clerk/clerk-expo";
+import { Redirect } from "expo-router";
+
 export const useWarmUpBrowser = () => {
   React.useEffect(() => {
     void WebBrowser.warmUpAsync();
@@ -19,6 +22,9 @@ export const useWarmUpBrowser = () => {
 WebBrowser.maybeCompleteAuthSession();
 
 export default function LoginScreen() {
+  const { user } = useUser();
+  console.log(user);
+
   const navigation = useNavigation();
   useWarmUpBrowser();
   const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
@@ -64,6 +70,8 @@ export default function LoginScreen() {
 
   return (
     <ScrollView>
+      {!user ? <Redirect href={"./login"} /> : <Redirect href={"home"} />}
+
       <View style={{ backgroundColor: Colors.white, height: "100% " }}>
         <Image
           source={require("./../../assets/images/login.png")}

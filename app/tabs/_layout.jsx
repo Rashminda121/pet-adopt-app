@@ -5,9 +5,9 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import Colors from "../../constants/Colors";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "@/app/tabs/home";
-import HomeScreen from "@/app/tabs/home";
-import HomeScreen from "@/app/tabs/home";
-import HomeScreen from "@/app/tabs/home";
+import Favourite from "./favourite";
+import Inbox from "./inbox";
+import Profile from "./profile";
 
 const Tabs = createBottomTabNavigator();
 
@@ -34,7 +34,7 @@ export default function TabLayout() {
           ),
         }}
         name="favourite"
-        component={HomeScreen}
+        component={Favourite}
       />
       <Tabs.Screen
         options={{
@@ -45,7 +45,7 @@ export default function TabLayout() {
           ),
         }}
         name="inbox"
-        component={HomeScreen}
+        component={Inbox}
       />
       <Tabs.Screen
         options={{
@@ -56,7 +56,7 @@ export default function TabLayout() {
           ),
         }}
         name="profile"
-        component={HomeScreen}
+        component={Profile}
       />
     </Tabs.Navigator>
   );
