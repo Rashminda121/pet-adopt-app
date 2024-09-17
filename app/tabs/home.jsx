@@ -3,6 +3,7 @@ import React from "react";
 
 import Header from "@/components/Home/Header";
 import Slider from "@/components/Home/Slider";
+import PetListByCategory from "./../../components/Home/PetListByCategory";
 
 export default function Home() {
   return (
@@ -13,7 +14,8 @@ export default function Home() {
       {/* slider */}
       <Slider />
 
-      {/* category */}
+      {/* pet list & category */}
+      <PetListByCategory />
 
       {/* list of pets */}
 
