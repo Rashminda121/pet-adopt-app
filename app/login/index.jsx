@@ -1,5 +1,5 @@
 import { View, Image, Text, Pressable, ScrollView, Alert } from "react-native";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import Colors from "@/constants/Colors";
 
 import { useNavigation } from "@react-navigation/native";
@@ -23,9 +23,17 @@ WebBrowser.maybeCompleteAuthSession();
 
 export default function LoginScreen() {
   const { user } = useUser();
-  console.log(user);
+  // console.log(user);
 
   const navigation = useNavigation();
+
+  // direct user to home page if user is available
+  useEffect(() => {
+    if (user) {
+      navigation.navigate("tabs", { screen: "home" });
+    }
+  }, [user, navigation]);
+
   useWarmUpBrowser();
   const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
   const { isSignedIn } = useSession(); // Check if the user is signed in

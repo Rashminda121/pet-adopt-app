@@ -25,7 +25,7 @@ export default function Category({ category }) {
     setCategoryList([]);
     const snapshot = await getDocs(collection(db, "Category"));
     snapshot.forEach((doc) => {
-      console.log(doc.data());
+      // console.log(doc.data());
       setCategoryList((categoryList) => [...categoryList, doc.data()]);
     });
   };

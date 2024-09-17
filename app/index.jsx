@@ -2,16 +2,24 @@ import { useUser } from "@clerk/clerk-expo";
 import { Link, Redirect, useRootNavigationState } from "expo-router";
 import { useEffect } from "react";
 import { Text, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Index() {
   const { user } = useUser();
-  console.log(user);
+  const navigation = useNavigation();
+  // console.log(user);
 
   const rootNavigationState = useRootNavigationState();
 
   useEffect(() => {
+    if (user) {
+      navigation.navigate("tabs", { screen: "home" });
+    } else {
+      navigation.navigate("login/index");
+    }
+
     CheckNavigationLoaded();
-  }, []);
+  }, [user, navigation]);
 
   const CheckNavigationLoaded = () => {
     if (!rootNavigationState.key) {
@@ -28,10 +36,11 @@ export default function Index() {
       }}
     >
       {user ? <Redirect href={"home"} /> : <Redirect href={"./login"} />}
-      {!user ? <Redirect href={"./login"} /> : <Redirect href={"home"} />}
 
       <Link href={"./login"}>
-        <Text style={{ fontSize: 40 }}>Go to login Page if not redirected</Text>
+        <Text style={{ fontSize: 35, textAlign: "center" }}>
+          Click here, if not Redirected
+        </Text>
       </Link>
     </View>
   );

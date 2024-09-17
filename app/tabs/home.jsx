@@ -17,9 +17,10 @@ export default function Home() {
       {/* pet list & category */}
       <PetListByCategory />
 
-      {/* list of pets */}
-
       {/* add new pet */}
+      <View>
+        <Text>Add New Pet</Text>
+      </View>
     </View>
   );
 }
