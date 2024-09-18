@@ -5,7 +5,6 @@ export default function PetDetails() {
   return (
     <View>
       <Text>PetDetails</Text>
-      <Text>PetDetails</Text>
     </View>
   );
 }
