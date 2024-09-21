@@ -39,7 +39,7 @@ export default function Index() {
 
       <Link href={"./login"}>
         <Text style={{ fontSize: 35, textAlign: "center" }}>
-          Click here, if not Redirected
+          Please click here, if not Redirected
         </Text>
       </Link>
     </View>
