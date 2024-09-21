@@ -1,10 +1,20 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import Colors from "@/constants/Colors";
+import { useNavigation } from "expo-router";
 
 export default function PetListItem({ pets }) {
+  const navigation = useNavigation();
+
+  const onPress = () => {
+    navigation.navigate("petDetails/index", {
+      pets: pets,
+    });
+  };
+
   return (
-    <View
+    <TouchableOpacity
+      onPress={onPress}
       style={{
         padding: 10,
         marginRight: 15,
@@ -48,6 +58,6 @@ export default function PetListItem({ pets }) {
           {pets?.age} yrs
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }

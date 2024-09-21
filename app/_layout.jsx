@@ -8,6 +8,7 @@ import LoginScreen from "@/app/login/index";
 import Index from "@/app/index";
 import HomeScreen from "@/app/tabs/home";
 import Tabs from "@/app/tabs/_layout";
+import PetDetails from "./petDetails/index";
 
 const Stack = createStackNavigator();
 
@@ -53,6 +54,11 @@ export default function RootLayout() {
           name="login/index"
           component={LoginScreen}
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="petDetails/index"
+          component={PetDetails}
+          // options={{ headerShown: false }}
         />
         <Stack.Screen name="home" component={HomeScreen} />
       </Stack.Navigator>

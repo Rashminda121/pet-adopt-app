@@ -19,7 +19,13 @@ export default function Home() {
       showsVerticalScrollIndicator={false}
       showsHorizontalScrollIndicator={false}
     >
-      <View style={{ justifyContent: "center", padding: 20, marginTop: 20 }}>
+      <View
+        style={{
+          justifyContent: "center",
+          padding: 20,
+          marginTop: 20,
+        }}
+      >
         {/* header */}
         <Header />
 
@@ -30,6 +36,7 @@ export default function Home() {
         <PetListByCategory />
 
         {/* add new pet */}
+
         <TouchableOpacity onPress={() => {}} style={styles.addNewPetContainer}>
           <MaterialIcons name="pets" size={24} color="black" />
           <Text
