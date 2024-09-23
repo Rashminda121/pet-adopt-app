@@ -58,7 +58,7 @@ export default function RootLayout() {
         <Stack.Screen
           name="petDetails/index"
           component={PetDetails}
-          // options={{ headerShown: false }}
+          options={{ headerShown: false }}
         />
         <Stack.Screen name="home" component={HomeScreen} />
       </Stack.Navigator>
