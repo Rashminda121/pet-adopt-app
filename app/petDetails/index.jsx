@@ -22,7 +22,6 @@ export default function PetDetails() {
     <View style={{ marginTop: 30 }}>
       {/* pet info */}
       <PetInfo pet={pets} />
-      <PetInfo pet={pets} />
 
       {/* pet propertise */}
       <PetSubInfo />
