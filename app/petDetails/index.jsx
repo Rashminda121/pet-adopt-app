@@ -25,6 +25,7 @@ export default function PetDetails() {
 
       {/* pet propertise */}
       <PetSubInfo />
+      <PetSubInfo />
 
       {/* about */}
 
