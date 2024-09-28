@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, ScrollView } from "react-native";
 import React, { useEffect } from "react";
 import { useRoute } from "@react-navigation/native";
 import PetInfo from "./../../components/PetDetails/petInfo";
@@ -19,19 +19,23 @@ export default function PetDetails() {
   // }, []);
 
   return (
-    <View style={{ marginTop: 30 }}>
-      {/* pet info */}
-      <PetInfo pet={pets} />
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      showsHorizontalScrollIndicator={false}
+    >
+      <View style={{ marginTop: 30 }}>
+        {/* pet info */}
+        <PetInfo pet={pets} />
 
-      {/* pet propertise */}
-      <PetSubInfo />
-      
+        {/* pet propertise */}
+        <PetSubInfo pet={pets} />
 
-      {/* about */}
+        {/* about */}
 
-      {/* owner */}
+        {/* owner */}
 
-      {/* addopt button */}
-    </View>
+        {/* addopt button */}
+      </View>
+    </ScrollView>
   );
 }
