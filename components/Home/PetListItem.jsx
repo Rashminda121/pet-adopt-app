@@ -2,6 +2,7 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import Colors from "@/constants/Colors";
 import { useNavigation } from "expo-router";
+import MarkFav from "../MarkFav";
 
 export default function PetListItem({ pets }) {
   const navigation = useNavigation();
@@ -22,6 +23,10 @@ export default function PetListItem({ pets }) {
         borderRadius: 10,
       }}
     >
+      <View style={{ position: "absolute", zIndex: 10, right: 12, top: 13 }}>
+        <MarkFav pet={pets} name={"heart"} color="white" />
+      </View>
+
       <Image
         source={{ uri: pets.imageUrl }}
         style={{
@@ -34,6 +39,7 @@ export default function PetListItem({ pets }) {
       <Text style={{ fontFamily: "outfit-medium", fontSize: 18 }}>
         {pets?.name?.charAt(0).toUpperCase() + pets?.name?.slice(1)}
       </Text>
+
       <View
         style={{
           display: "flex",

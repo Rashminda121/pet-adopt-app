@@ -4,11 +4,17 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import Shared from "@/Shared/Shared";
 import { useUser } from "@clerk/clerk-expo";
 
-export default function MarkFav({ pet }) {
+export default function MarkFav({
+  pet,
+  name = "heart-outline",
+  color = "black",
+}) {
   const { user } = useUser();
   const [favList, setFavList] = useState([]);
 
-  //   console.log(user);
+  if (!user) {
+    console.log("user is unavailable");
+  }
 
   useEffect(() => {
     user && GetFav();
@@ -24,14 +30,22 @@ export default function MarkFav({ pet }) {
     const favResult = favList;
     favResult.push(pet.id);
     setFavList(favResult);
-    await Shared.UpdateFav(user, favResult);
+    try {
+      await Shared.UpdateFav(user, favResult);
+    } catch (error) {
+      console.error("Error in Add To Favorite: ", error);
+    }
     GetFav();
   };
 
   const RemoveFromFav = async () => {
     const favResult = favList.filter((item) => item != pet.id);
     setFavList(favResult);
-    await Shared.UpdateFav(user, favResult);
+    try {
+      await Shared.UpdateFav(user, favResult);
+    } catch (error) {
+      console.error("Error in Removing from favorites: ", error);
+    }
     GetFav();
   };
 
@@ -43,7 +57,7 @@ export default function MarkFav({ pet }) {
         </Pressable>
       ) : (
         <Pressable onPress={() => AddToFav()}>
-          <Ionicons name="heart-outline" size={30} color="black" />
+          <Ionicons name={name} size={30} color={color} />
         </Pressable>
       )}
     </View>
