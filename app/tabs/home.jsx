@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -12,8 +12,19 @@ import Slider from "@/components/Home/Slider";
 import Colors from "@/constants/Colors";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import PetListByCategory from "./../../components/Home/PetListByCategory";
+import { useUser } from "@clerk/clerk-expo";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Home() {
+  const { user } = useUser();
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    if (!user) {
+      navigation.navigate("login/index");
+    }
+  }, [user, navigation]);
+
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}

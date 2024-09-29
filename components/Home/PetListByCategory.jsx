@@ -11,6 +11,12 @@ export default function PetListByCategory() {
 
   useEffect(() => {
     GetPetList("Dogs");
+
+    const intervalId = setInterval(() => {
+      GetPetList("Dogs");
+    }, 80000); // 80 seconds in milliseconds
+
+    return () => clearInterval(intervalId);
   }, []);
 
   //   get pet list on category selection
