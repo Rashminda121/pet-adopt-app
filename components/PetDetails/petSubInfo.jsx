@@ -6,19 +6,23 @@ export default function PetSubInfo({ pet }) {
   return (
     <View
       style={{
-        padding: 20,
+        paddingHorizontal: 20,
       }}
     >
       <View style={{ display: "flex", flexDirection: "row" }}>
-        <PetSubInfoCard icon={"calendar"} title={"Age"} value={pet.age} />
-        <PetSubInfoCard icon={"paw"} title={"Breed"} value={pet.breed} />
+        <PetSubInfoCard
+          icon={"calendar"}
+          title={"Age"}
+          value={pet?.age + " Years"}
+        />
+        <PetSubInfoCard icon={"paw"} title={"Breed"} value={pet?.breed} />
       </View>
       <View style={{ display: "flex", flexDirection: "row" }}>
-        <PetSubInfoCard icon={"male-female"} title={"Sex"} value={pet.sex} />
+        <PetSubInfoCard icon={"male-female"} title={"Sex"} value={pet?.sex} />
         <PetSubInfoCard
-          icon={"fitness"}
+          icon={"scale"}
           title={"Weight"}
-          value={pet.weight + " kg"}
+          value={pet?.weight + " Kg"}
         />
       </View>
     </View>

@@ -32,7 +32,7 @@ export default function PetListItem({ pets }) {
         }}
       />
       <Text style={{ fontFamily: "outfit-medium", fontSize: 18 }}>
-        {pets?.name}
+        {pets?.name?.charAt(0).toUpperCase() + pets?.name?.slice(1)}
       </Text>
       <View
         style={{

@@ -8,7 +8,12 @@ export default function PetInfo({ pet }) {
     <View style={{ marginTop: 20 }}>
       <Image
         source={{ uri: pet.imageUrl }}
-        style={{ width: "100%", height: 400, objectFit: "cover" }}
+        style={{
+          width: "100%",
+          height: 400,
+          objectFit: "cover",
+          borderRadius: 20,
+        }}
       />
       <View
         style={{
@@ -21,7 +26,7 @@ export default function PetInfo({ pet }) {
       >
         <View>
           <Text style={{ fontFamily: "outfit-bold", fontSize: 27 }}>
-            {pet?.name}
+            {pet?.name?.charAt(0).toUpperCase() + pet?.name?.slice(1)}
           </Text>
           <Text
             style={{ fontFamily: "outfit", fontSize: 16, color: Colors.GRAY }}

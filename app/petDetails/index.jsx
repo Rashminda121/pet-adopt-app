@@ -4,6 +4,7 @@ import { useRoute } from "@react-navigation/native";
 import PetInfo from "./../../components/PetDetails/petInfo";
 // import { useNavigation } from "expo-router";
 import PetSubInfo from "./../../components/PetDetails/petSubInfo";
+import AboutPet from "./../../components/PetDetails/aboutPet";
 
 export default function PetDetails() {
   const route = useRoute();
@@ -19,11 +20,11 @@ export default function PetDetails() {
   // }, []);
 
   return (
-    <ScrollView
-      showsVerticalScrollIndicator={false}
-      showsHorizontalScrollIndicator={false}
-    >
-      <View style={{ marginTop: 30 }}>
+    <View style={{ marginTop: 30 }}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+      >
         {/* pet info */}
         <PetInfo pet={pets} />
 
@@ -31,11 +32,12 @@ export default function PetDetails() {
         <PetSubInfo pet={pets} />
 
         {/* about */}
+        <AboutPet pet={pets} />
 
         {/* owner */}
+      </ScrollView>
 
-        {/* addopt button */}
-      </View>
-    </ScrollView>
+      {/* addopt button */}
+    </View>
   );
 }
