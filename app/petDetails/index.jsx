@@ -1,10 +1,18 @@
-import { View, ScrollView } from "react-native";
+import {
+  View,
+  ScrollView,
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+} from "react-native";
 import React, { useEffect } from "react";
 import { useRoute } from "@react-navigation/native";
 import PetInfo from "./../../components/PetDetails/petInfo";
 // import { useNavigation } from "expo-router";
 import PetSubInfo from "./../../components/PetDetails/petSubInfo";
 import AboutPet from "./../../components/PetDetails/aboutPet";
+import OwnerInfo from "./../../components/PetDetails/ownerInfo";
+import Colors from "@/constants/Colors";
 
 export default function PetDetails() {
   const route = useRoute();
@@ -35,9 +43,32 @@ export default function PetDetails() {
         <AboutPet pet={pets} />
 
         {/* owner */}
+        <OwnerInfo pet={pets} />
+        {/* space */}
+        <View style={{ height: 70 }}></View>
       </ScrollView>
-
-      {/* addopt button */}
+      {/* adopt button */}
+      <View style={styles?.bottomContainer}>
+        <TouchableOpacity style={styles.adoptButton}>
+          <Text
+            style={{
+              textAlign: "center",
+              fontFamily: "outfit-medium",
+              fontSize: 20,
+            }}
+          >
+            Adopt Me
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  adoptButton: {
+    padding: 15,
+    backgroundColor: Colors.PRIMARY,
+  },
+  bottomContainer: { position: "absolute", width: "100%", bottom: 0 },
+});

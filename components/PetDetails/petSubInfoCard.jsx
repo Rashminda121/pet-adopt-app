@@ -18,7 +18,7 @@ export default function PetSubInfoCard({ pet, icon, title, value }) {
         flex: 1,
       }}
     >
-      <Ionicons name={icon} size={40} color="#FFC000" />
+      <Ionicons name={icon} size={40} color={Colors.dark_yellow} />
       <View style={{ flex: 1 }}>
         <Text
           style={{ fontFamily: "outfit", fontSize: 16, color: Colors.GRAY }}

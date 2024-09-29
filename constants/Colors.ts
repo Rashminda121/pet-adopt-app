@@ -6,4 +6,5 @@ export default {
   light_primary: "#fff1c9",
   light_orange: "#FFD7C4",
   orange: "#FF9100",
+  dark_yellow: "#FFC000",
 };
