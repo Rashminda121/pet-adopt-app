@@ -15,7 +15,13 @@ export default function OwnerInfo({ pet }) {
       >
         <Image
           source={{ uri: pet?.user?.imageUrl }}
-          style={{ width: 60, height: 60, borderRadius: 99 }}
+          style={{
+            width: 60,
+            height: 60,
+            borderRadius: 99,
+            borderWidth: 2,
+            borderColor: Colors.dark_yellow,
+          }}
         />
         <View>
           <Text
@@ -39,7 +45,7 @@ export default function OwnerInfo({ pet }) {
           </Text>
         </View>
       </View>
-      <Ionicons name="send-sharp" size={28} color="black" />
+      <Ionicons name="send-sharp" size={28} color={Colors.dark_yellow} />
     </View>
   );
 }
@@ -54,7 +60,7 @@ const styles = StyleSheet.create({
     gap: 20,
     borderWidth: 1,
     borderRadius: 15,
-    borderColor: Colors.GRAY,
+    borderColor: Colors.dark_yellow,
     padding: 10,
     backgroundColor: Colors.white,
     justifyContent: "space-between",
