@@ -74,7 +74,6 @@ export default function Favourite() {
         renderItem={({ item, index }) => (
           <View>
             <PetListItem pets={item} />
-            <View></View>
           </View>
         )}
       />
