@@ -63,7 +63,7 @@ export default function Favourite() {
       }}
     >
       <Text style={{ fontFamily: "outfit-medium", fontSize: 30 }}>
-        Favoritess
+        Favorites
       </Text>
       <FlatList
         data={favPets}
