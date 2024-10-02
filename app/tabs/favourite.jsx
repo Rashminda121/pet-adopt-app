@@ -31,7 +31,7 @@ export default function Favourite() {
     GetFavPetList(result?.favorites);
   };
 
-  //fetch related data
+  //fetch pet list related data
 
   const GetFavPetList = async (favId_) => {
     setLoader(true);
