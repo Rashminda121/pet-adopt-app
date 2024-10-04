@@ -71,7 +71,7 @@ export default function Favourite() {
         style={{ marginTop: 10 }}
         onRefresh={GetFavPetIds}
         refreshing={loader}
-        renderItem={({ item, index }) => (
+        renderItem={({ item }) => (
           <View>
             <PetListItem pets={item} />
           </View>
