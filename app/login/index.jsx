@@ -113,7 +113,7 @@ export default function LoginScreen() {
             onPress={onPress}
             style={{
               padding: 14,
-              marginTop: 100,
+              marginTop: 80,
               backgroundColor: Colors.PRIMARY,
               width: "100%",
               borderRadius: 14,

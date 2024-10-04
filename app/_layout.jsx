@@ -9,6 +9,7 @@ import Index from "@/app/index";
 import HomeScreen from "@/app/tabs/home";
 import Tabs from "@/app/tabs/_layout";
 import PetDetails from "./petDetails/index";
+import AddNewPet from "./addNewPet/index";
 
 const Stack = createStackNavigator();
 
@@ -61,6 +62,11 @@ export default function RootLayout() {
           options={{ headerShown: false }}
         />
         <Stack.Screen name="home" component={HomeScreen} />
+        <Stack.Screen
+          name="addNewPet/index"
+          component={AddNewPet}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </ClerkProvider>
   );

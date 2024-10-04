@@ -25,6 +25,10 @@ export default function Home() {
     }
   }, [user, navigation]);
 
+  const onPressNav = () => {
+    navigation.navigate("addNewPet/index");
+  };
+
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
@@ -48,7 +52,10 @@ export default function Home() {
 
         {/* add new pet */}
 
-        <TouchableOpacity onPress={() => {}} style={styles.addNewPetContainer}>
+        <TouchableOpacity
+          onPress={onPressNav}
+          style={styles.addNewPetContainer}
+        >
           <MaterialIcons name="pets" size={24} color="black" />
           <Text
             style={{
