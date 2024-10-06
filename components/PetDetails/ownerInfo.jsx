@@ -14,7 +14,7 @@ export default function OwnerInfo({ pet }) {
         }}
       >
         <Image
-          source={{ uri: pet?.user?.imageUrl }}
+          source={{ uri: pet?.userImage ? pet?.userImage : "null" }}
           style={{
             width: 60,
             height: 60,
@@ -30,7 +30,7 @@ export default function OwnerInfo({ pet }) {
               fontSize: 18,
             }}
           >
-            {pet?.user?.name
+            {pet?.userName
               .split(" ")
               .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
               .join(" ")}
@@ -53,6 +53,7 @@ export default function OwnerInfo({ pet }) {
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: 20,
+    marginVertical: 20,
     paddingHorizontal: 20,
     display: "flex",
     flexDirection: "row",

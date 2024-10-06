@@ -31,7 +31,6 @@ export default function AddNewPet() {
   const [selectedCategory, setSelectedcategory] = useState();
   const [image, setImage] = useState();
   const [loader, setLoader] = useState(false);
-  const navigation = useNavigation();
   const router = useRouter();
 
   const { user } = useUser();
