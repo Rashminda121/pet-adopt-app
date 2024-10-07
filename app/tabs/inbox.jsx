@@ -8,6 +8,7 @@ import UserItems from "./../../components/inbox/userItems";
 export default function Inbox() {
   const { user } = useUser();
   const [userList, setUserList] = useState([]);
+  const [loader, setLoader] = useState(false);
 
   useEffect(() => {
     user && GetUserList();
@@ -15,6 +16,8 @@ export default function Inbox() {
 
   // get user list depends on current user emails
   const GetUserList = async () => {
+    setLoader(true);
+    setUserList([]);
     try {
       const q = query(
         collection(db, "Chat"),
@@ -33,6 +36,7 @@ export default function Inbox() {
     } catch (error) {
       console.log(error);
     }
+    setLoader(false);
   };
 
   //filter other users
@@ -57,6 +61,9 @@ export default function Inbox() {
       <Text style={{ fontFamily: "outfit-medium", fontSize: 30 }}>Inbox</Text>
       <FlatList
         data={MapOtherUserList()}
+        style={{ marginTop: 20 }}
+        refreshing={loader}
+        onRefresh={() => GetUserList()}
         renderItem={({ item, index }) => (
           <UserItems userInfo={item} key={index} />
         )}
