@@ -11,6 +11,7 @@ import Tabs from "@/app/tabs/_layout";
 import PetDetails from "./petDetails/index";
 import AddNewPet from "./addNewPet/index";
 import ChatScreen from "./chat/index";
+import UserPost from "./userPost/index";
 
 const Stack = createStackNavigator();
 
@@ -72,6 +73,11 @@ export default function RootLayout() {
           name="chat/index"
           component={ChatScreen}
           // options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="userPost/index"
+          component={UserPost}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </ClerkProvider>

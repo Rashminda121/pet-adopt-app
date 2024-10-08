@@ -32,6 +32,7 @@ export default function AddNewPet() {
   const [image, setImage] = useState();
   const [loader, setLoader] = useState(false);
   const router = useRouter();
+  const navigation = useNavigation();
 
   const { user } = useUser();
 
@@ -85,6 +86,7 @@ export default function AddNewPet() {
 
     if (image) {
       UploadImage();
+      navigation.navigate("home");
     } else {
       ToastAndroid.show(
         "Image is Missing, Please add an Image",
@@ -111,6 +113,7 @@ export default function AddNewPet() {
           SaveFormData(downloadUrl);
         });
       });
+    navigation.navigate("/home");
   };
 
   const SaveFormData = async (imageUrl) => {
@@ -124,7 +127,8 @@ export default function AddNewPet() {
       id: docId,
     });
     setLoader(false);
-    router.replace("home");
+    router.replace("/tabs/home");
+    navigation.navigate("/home");
   };
 
   return (

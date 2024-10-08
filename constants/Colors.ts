@@ -7,4 +7,5 @@ export default {
   light_orange: "#FFD7C4",
   orange: "#FF9100",
   dark_yellow: "#FFC000",
+  light_red: "#FFC1C3",
 };
