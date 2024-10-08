@@ -17,7 +17,7 @@ export default function Favourite() {
 
     const intervalId = setInterval(() => {
       GetFavPetIds();
-    }, 80000); // 80 seconds in milliseconds
+    }, 60000); // 80 seconds in milliseconds
 
     return () => clearInterval(intervalId);
   }, [user]);
